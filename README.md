@@ -148,10 +148,6 @@ Pull requests welcome! For major changes, please open an issue first to discuss 
 
 ---
 
-## 📬 Contact
 
-Project Lead: [Your Name or Org]  
-Email: [your@email.com]  
-GitHub: [github.com/your-org]
 
 ---
