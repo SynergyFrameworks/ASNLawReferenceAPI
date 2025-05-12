@@ -6,12 +6,28 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using ASNLawReferenceAPI.Background;
 using Microsoft.Extensions.Configuration;
+using Serilog;
+using Serilog.Events;
+using Elastic.Serilog.Sinks;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
+
+
+// Configure Serilog with just console logging for now
+Log.Logger = new LoggerConfiguration()
+    .MinimumLevel.Information()
+    .MinimumLevel.Override("Microsoft", LogEventLevel.Warning)
+    .MinimumLevel.Override("System", LogEventLevel.Warning)
+    .Enrich.FromLogContext()
+    .WriteTo.Console()
+    .CreateLogger();
+
+builder.Host.UseSerilog(); // Use Serilog instead of default .NET logger
 
 // Configure Swagger/OpenAPI
 builder.Services.AddSwaggerGen(c =>
@@ -47,6 +63,19 @@ builder.Services.AddSwaggerGen(c =>
         }
     });
 });
+
+
+// Add HttpClient factory
+builder.Services.AddHttpClient();
+
+// Or to configure a named HttpClient specifically for OpenAI
+builder.Services.AddHttpClient("OpenAI", client =>
+{
+    client.BaseAddress = new Uri("https://api.openai.com/v1/");
+    client.DefaultRequestHeaders.Add("Authorization", $"Bearer {builder.Configuration["OpenAI:ApiKey"]}");
+});
+
+
 
 // Configure database
 builder.Services.AddDbContext<DocumentDbContext>(options =>
@@ -84,6 +113,8 @@ builder.Services.AddSingleton<IBlobStorageService, AzureBlobStorageService>();
 builder.Services.AddSingleton<IVectorDbService, QdrantVectorDbService>();
 builder.Services.AddSingleton<IFullTextSearchService, OpenSearchService>();
 builder.Services.AddSingleton<IEmbeddingService, OpenAIEmbeddingService>();
+builder.Services.AddSingleton<IOcrService, TesseractOcrService>();
+builder.Services.AddTransient<HttpClient>();
 
 // Register background services
 builder.Services.AddHostedService<DocumentProcessingBackgroundService>();
