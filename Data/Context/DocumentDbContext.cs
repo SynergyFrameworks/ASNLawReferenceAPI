@@ -1,7 +1,7 @@
-using LegalReferenceAPI.Models;
+using ASNLawReferenceAPI.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace LegalReferenceAPI.Data
+namespace ASNLawReferenceAPI.Data
 {
     public class DocumentDbContext : DbContext
     {

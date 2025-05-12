@@ -1,8 +1,8 @@
-using LegalReferenceAPI.Data;
-using LegalReferenceAPI.Models;
+using ASNLawReferenceAPI.Data;
+using ASNLawReferenceAPI.Models;
 using System.Text.RegularExpressions;
 
-namespace LegalReferenceAPI.Services
+namespace ASNLawReferenceAPI.Services
 {
     public interface IIndexingService
     {

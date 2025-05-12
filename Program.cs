@@ -1,10 +1,10 @@
-using LegalReferenceAPI.Services;
-using LegalReferenceAPI.Data;
-using LegalReferenceAPI.Models;
+using ASNLawReferenceAPI.Services;
+using ASNLawReferenceAPI.Data;
+using ASNLawReferenceAPI.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
-using LegalReferenceAPI.Background;
+using ASNLawReferenceAPI.Background;
 using Microsoft.Extensions.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);

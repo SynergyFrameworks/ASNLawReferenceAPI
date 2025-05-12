@@ -1,9 +1,9 @@
-using LegalReferenceAPI.Models;
-using LegalReferenceAPI.Services;
+using ASNLawReferenceAPI.Models;
+using ASNLawReferenceAPI.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace LegalReferenceAPI.Controllers
+namespace ASNLawReferenceAPI.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]

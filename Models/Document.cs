@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;
 
-namespace LegalReferenceAPI.Models
+namespace ASNLawReferenceAPI.Models
 {
     public class Document
     {

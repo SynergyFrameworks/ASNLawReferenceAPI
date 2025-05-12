@@ -1,8 +1,8 @@
-using LegalReferenceAPI.Data;
-using LegalReferenceAPI.Models;
+using ASNLawReferenceAPI.Data;
+using ASNLawReferenceAPI.Models;
 using System.Security.Claims;
 
-namespace LegalReferenceAPI.Services
+namespace ASNLawReferenceAPI.Services
 {
     public interface IDocumentService
     {

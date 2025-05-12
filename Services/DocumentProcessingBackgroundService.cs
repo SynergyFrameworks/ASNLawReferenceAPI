@@ -1,8 +1,8 @@
-using LegalReferenceAPI.Services;
+using ASNLawReferenceAPI.Services;
 using System.Threading.Channels;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 
-namespace LegalReferenceAPI.Background
+namespace ASNLawReferenceAPI.Background
 {
     public class DocumentProcessingBackgroundService : BackgroundService
     {
